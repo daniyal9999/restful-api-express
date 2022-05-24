@@ -1,13 +1,13 @@
 var mongoose = require("mongoose");
 const Joi = require('joi');
 
-var productSchema = mongoose.Schema({
+var storageSchema = mongoose.Schema({
     name: String,
     price: Number,
 });
-var Product = mongoose.model("Product", productSchema);
+var Storage= mongoose.model("Storage", storageSchema);
 
-function validateProduct(data){
+function validateStorage(data){
     const schema = Joi.object({
         name: Joi.string().min(3).max(10).required(),
         price: Joi.number().min(0).required()
@@ -15,5 +15,5 @@ function validateProduct(data){
     return schema.validate(data,{abortEarly:false});
 }
 
-module.exports.Product = Product;
-module.exports.validate = validateProduct;
+module.exports.Storage = Storage;
+module.exports.validate = validateStorage;
